@@ -1,36 +1,21 @@
 <?php
 // no direct access
 defined('_JEXEC') or die;
-JHtml::script('http://code.jquery.com/jquery-1.10.2.min.js');
+
 JHtml::stylesheet(Juri::base() . 'components/com_workshop/css/style.css');
 JHtml::stylesheet(Juri::base() . 'components/com_workshop/css/datepicker.css');
+JHtml::script(Juri::base() . 'components/com_workshop/js/jquery.js');
 JHtml::script(Juri::base() . 'components/com_workshop/js/bootstrap-datepicker.js');
-JHtml::script('http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js');
+JHtml::script(Juri::base() . 'components/com_workshop/js/script.js');
+
 $document = JFactory::getDocument();
 
 $editor = JFactory::getEditor();
 // Add Javascript directly here
 $formsubmit = JRoute::_( "index.php?view=default&layout=create-event");
-$document->addScriptDeclaration('
-    $(document).ready(function(){
-		$("#createEvent").submit(function(){
-			//alert("An inline JavaScript Declaration");
-		});
-/*$("#createEvent").submit(function(e) {
-    $.ajax({
-		type:"POST",
-		data: $("#createEvent").serialize(),
-		url:"<?php $formsubmit ?>",
-	}).done(function( msg ) {
-    alert( "Data Saved: " + msg );
-  })
-  .fail(function( jqXHR, textStatus ) {
-  alert( "Request failed: " + textStatus );
-});
-});*/
-    });
-');
+
 ?>
+
 <?php $backlink = JRoute::_( "index.php?view=default"); ?>
 <?php  ?>
 <div class="">
@@ -40,7 +25,7 @@ $document->addScriptDeclaration('
 	<hr class="divider">
 
 
-   <form id="createEvent" class="form-horizontal" role="form" method="post" action="<?php //echo $formsubmit ; ?>">
+   <form id="createEvent" class="form-horizontal" role="form" method="post" action="<?php //echo $formsubmit ; ?>" enctype="multipart/form-data">
 
 
 
@@ -106,7 +91,7 @@ $document->addScriptDeclaration('
   <div class="form-group">
     <label for="event_image" class="col-sm-2 control-label">Image</label>
     <div class="col-sm-4">
-      <input type="file" class="form-control" id="event_image" name="event_image" placeholder="Image">
+      <input type="file" multiple class="form-control" id="event_image" name="event_image" placeholder="Image">
     </div>
     <label for="brochure" class="col-sm-2 control-label">Brochure</label>
     <div class="col-sm-4">

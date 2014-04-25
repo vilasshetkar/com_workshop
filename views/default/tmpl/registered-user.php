@@ -5,24 +5,11 @@
 defined('_JEXEC') or die;
 
 $document = JFactory::getDocument();
-
+JHtml::stylesheet(Juri::base() . 'components/com_workshop/css/datepicker.css');
+JHtml::script(Juri::base() . 'components/com_workshop/js/bootstrap-datepicker.js');
+JHtml::script(Juri::base() . 'components/com_workshop/js/script.js');
  
 
-// Add Javascript directly here
-
-$document->addScriptDeclaration('
-
-    $(document).ready(function(){
-
-		$("a").click(function(){
-
-			//alert("An inline JavaScript Declaration");
-
-		});
-
-    });
-
-');
 
 ?>
 
@@ -56,16 +43,17 @@ $createEvent = JRoute::_( "index.php?view=default&layout=create-event");
 
 <?php 
 
-$register = JRoute::_( "index.php?view=default&layout=register&id=".$row['Id'] ); 
+$register = JRoute::_( "index.php?option=com_workshop&view=default&layout=register&id=".$row['event_id'] ); 
+$delUser = JRoute::_( "index.php?option=com_workshop&view=default&layout=registered-user&delUser=".$row['id']."&id=".$_GET['id'] ); 
 
 ?>
     <tr>
         <td> <?php echo $i+1 ?> </td>
         <td> <?php echo $row['participant_name'] ?> </td>
-        <td> <?php echo $row['program_date'] ?> </td>
+        <td> <?php echo date("d-M-Y", strtotime($row['date']))  ?> </td>
         <td> <?php echo $row['email'] ?> </td>
         <td> <?php echo $row['phone'] ?> </td>
-        <td> <?php echo $row['event_id'] ?> </td>
+        <td><a href="<?php echo $delUser ?>">Delete</a> </td>
     </tr>
 
   <?php endforeach; ?>

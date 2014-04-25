@@ -93,7 +93,7 @@ class WorkShopViewDefault extends JViewLegacy
 			elseif($ce == 2) { echo $model->updateEvent(); }
 			elseif($ce == 'register') { echo $model->registerEvent() ;	 }
 			if($del) { echo $model->deleteEvent() ;	 }
-			if($this->getLayout()=='upload') { echo $model->uploadFile() ;	 }
+			if($this->getLayout()=='upload') { $model->uploadFile() ;	 }
 
 	
 			//get Model Object
@@ -142,6 +142,11 @@ class WorkShopViewDefault extends JViewLegacy
 				
 			//get Model Object
 			$result = $model->registeredUser($id);
+			
+			$delUsr = JRequest::getVar('delUser');
+			if(!$delUsr==""){
+				$model->deleteUser($delUsr);
+			}
 	
 			$this->user = $result;
 	

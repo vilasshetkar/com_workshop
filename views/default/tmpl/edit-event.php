@@ -2,6 +2,12 @@
 // no direct access
 defined('_JEXEC') or die;
 JHtml::stylesheet(Juri::base() . 'components/com_workshop/css/style.css');
+JHtml::stylesheet(Juri::base() . 'components/com_workshop/css/datepicker.css');
+JHtml::script(Juri::base() . 'components/com_workshop/js/jquery.js');
+JHtml::script(Juri::base() . 'components/com_workshop/js/bootstrap-datepicker.js');
+JHtml::script(Juri::base() . 'components/com_workshop/js/script.js');
+
+
 $document = JFactory::getDocument();
 
 $editor = JFactory::getEditor();
@@ -70,12 +76,12 @@ $document->addScriptDeclaration('
   <div class="form-group">
     <label for="start-date" class="col-sm-2 control-label">Start Date</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control datepicker" id="start_date" name="start_date" placeholder="Start Date" value="<?php echo $row["start_date"]; ?>">
+      <input type="text" class="form-control" id="start_date" name="start_date" placeholder="Start Date" value="<?php echo $row["start_date"]; ?>" data-date-format="yyyy-mm-dd">
     </div>
 
     <label for="start-date" class="col-sm-2 control-label">End Date</label>
     <div class="col-sm-2">
-      <input type="text" class="form-control datepicker" id="end_date" name="end_date" placeholder="End Date" value="<?php echo $row["end_date"]; ?>">
+      <input type="text" class="form-control" id="end_date" name="end_date" placeholder="End Date" value="<?php echo $row["end_date"]; ?>" data-date-format="yyyy-mm-dd">
     </div>
   </div>
   
@@ -83,9 +89,9 @@ $document->addScriptDeclaration('
   <div class="form-group">
     <label for="venue" class="col-sm-2 control-label">Venue</label>
     <div class="col-sm-10">
-    <?php echo $editor->display('venue', $row["venue"], '', '', '', '', false); ?>
-<!--    <textarea class="form-control" id="venue" name="venue" placeholder="Venue" rows="3"></textarea>
--->    </div>
+    <?php //echo $editor->display('venue', $row["venue"], '', '', '', '', false); ?>
+    <textarea class="form-control" id="venue" name="venue" placeholder="Venue" rows="3"><?php echo $row["venue"]; ?></textarea>
+    </div>
   </div>
   <div class="form-group">
     <label for="event_image" class="col-sm-2 control-label">Image</label>
