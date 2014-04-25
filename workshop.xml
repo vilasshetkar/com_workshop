@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" client="site" method="upgrade">
+	<name>workshop</name>
+	<author>Vilas Shetkar</author>
+	<creationDate>26 Jan, 2014</creationDate>
+	<copyright>Copyright © 2014, Web Touch India Solutions, All Rights Reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>support@wtouch.in</authorEmail>
+	<authorUrl>http://www.wtouch.in</authorUrl>
+	<version>1.0.0</version>
+	<description>This is Joomla Component where you can manage your properties.</description>
+	<files>
+		<filename component="com_workshop">workshop.php</filename>
+		<filename>workshop.xml</filename>
+		<filename>controller.php</filename>
+		<filename>router.php</filename>
+		<filename>index.html</filename>
+		<folder>views/</folder>
+		<folder>models/</folder>
+		<folder>css/</folder>
+		<folder>js/</folder>
+	</files>
+	<administration>
+		<menu link="option=com_workshop">Work Shop</menu>
+	    <files>
+	    	<filename component="com_workshop">workshop.php</filename>
+	    </files>
+	</administration>
+</extension>

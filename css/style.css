@@ -1,0 +1,6 @@
+@charset "utf-8";
+/* CSS Document */
+.tab-content > .active{
+	border:1px solid #dddddd;
+	border-top:none;
+}
